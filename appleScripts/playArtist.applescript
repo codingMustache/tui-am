@@ -15,7 +15,7 @@ tell application "Music"
 	end if
 	set artistTracks to (every track of library playlist 1 whose artist is artistName)
 	if (count of artistTracks) is 0 then
-		return "No tracks found from artist: " & artistName
+		return "No tracks found from " & artistName
 	end if
 	delete every track of artistPlaylist
 	repeat with aTrack in artistTracks
