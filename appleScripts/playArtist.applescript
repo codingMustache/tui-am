@@ -13,8 +13,11 @@ tell application "Music"
 	if artistPlaylist is null then
 		set artistPlaylist to (make new playlist with properties {name:playlistName})
 	end if
-	delete every track of artistPlaylist
 	set artistTracks to (every track of library playlist 1 whose artist is artistName)
+	if (count of artistTracks) is 0 then
+		return "No tracks found from " & artistName
+	end if
+	delete every track of artistPlaylist
 	repeat with aTrack in artistTracks
 		duplicate aTrack to artistPlaylist
 	end repeat
